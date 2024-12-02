@@ -1,0 +1,87 @@
+/* RESET */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #0056b3;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('https://via.placeholder.com/1200x500') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #ff6600;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.promo {
+    padding: 2rem;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.promo-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.promo-cards .card {
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 200px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+}

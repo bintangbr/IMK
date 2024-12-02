@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Cakupan Area</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN4wpqwX3zSsDg0nA1SE73VtsbL6Ezl10" defer></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">ISPConnect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="paket.html">Paket Layanan</a></li>
+                <li><a href="cek-area.html">Cek Cakupan Area</a></li>
+                <li><a href="dukungan.html">Dukungan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CEK AREA SECTION -->
+    <section class="cek-area">
+        <h1>Cek Cakupan Area</h1>
+        <p>Masukkan alamat atau kode pos Anda untuk memeriksa apakah layanan tersedia di wilayah Anda.</p>
+
+        <!-- FORM -->
+        <form id="areaForm">
+            <input type="text" id="locationInput" placeholder="Masukkan alamat atau kode pos" required>
+            <button type="submit">Cek Area</button>
+        </form>
+
+        <!-- GOOGLE MAPS -->
+        <div id="map"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2024 ISPConnect. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // Inisialisasi Peta
+        function initMap() {
+            const indonesia = { lat: -2.5489, lng: 118.0149 }; // Lokasi awal: Indonesia
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: indonesia,
+            });
+
+            const geocoder = new google.maps.Geocoder();
+            const form = document.getElementById("areaForm");
+            
+            // Ketika form disubmit
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const address = document.getElementById("locationInput").value;
+
+                geocodeAddress(geocoder, map, address);
+            });
+        }
+
+        // Fungsi untuk mencari alamat
+        function geocodeAddress(geocoder, map, address) {
+            geocoder.geocode({ address: address }, (results, status) => {
+                if (status === "OK") {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(15); // Zoom in pada lokasi yang ditemukan
+                    new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location,
+                    });
+
+                    alert("Area tersedia untuk layanan ISPConnect!");
+                } else {
+                    alert("Pencarian gagal. Periksa kembali alamat Anda.");
+                }
+            });
+        }
+
+        // Panggil fungsi inisialisasi peta
+        window.onload = initMap;
+    </script>
+</body>
+</html>
